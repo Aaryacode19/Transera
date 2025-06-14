@@ -37,6 +37,13 @@ def help_command(update: Update, context: CallbackContext) -> None:
         "Perfect for learners, travellers, and language fans."
     )
 
+def bot_not_working(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text(
+        "Oops! If Transera Bot is down or not responding, please DM me here:\n"
+        "👉 https://t.me/Aarya27T\n\n"
+        "I'll get it back up as soon as I can 💙"
+    )
+
 
 # Text handler
 def handle_text(update: Update, context: CallbackContext) -> None:
@@ -130,6 +137,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_text))
     dp.add_handler(MessageHandler(Filters.photo, handle_photo))
     dp.add_handler(CallbackQueryHandler(handle_translation_choice))
+    dp.add_handler(CommandHandler("botnotworking", bot_not_working))
 
     keep_alive()
     updater.start_polling()
